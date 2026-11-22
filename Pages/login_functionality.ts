@@ -7,8 +7,9 @@ export class LoginPage {
   readonly logo: Locator;
   readonly errorMessage: Locator;
   readonly productsTitle: Locator;
-
-  constructor(private readonly page: Page) {
+  readonly page: Page;
+  constructor(page: Page) {
+    this.page = page;
     this.usernameTxt = page.getByPlaceholder('Username');
     this.passwordTxt = page.getByPlaceholder('Password');
     this.loginBtn = page.getByRole('button', { name: 'Login' });
