@@ -7,6 +7,9 @@ export class LoginPage {
   readonly logo: Locator;
   readonly errorMessage: Locator;
   readonly productsTitle: Locator;
+  readonly errorCloseButton: Locator;
+  readonly menuButton: Locator;
+  readonly logoutLink: Locator;
   readonly page: Page;
   constructor(page: Page) {
     this.page = page;
@@ -15,7 +18,10 @@ export class LoginPage {
     this.loginBtn = page.getByRole('button', { name: 'Login' });
     this.logo = page.getByText('Swag Labs');
     this.errorMessage = page.locator('[data-test="error"]');
-    this.productsTitle = page.getByText('Products');
+    this.productsTitle = page.getByText('Products', { exact: true });
+    this.errorCloseButton = page.locator('[data-test="error-button"]');
+    this.menuButton = page.getByRole('button', { name: 'Open Menu' });
+    this.logoutLink = page.getByRole('button', { name: 'Logout' });
   }
 
   async goto() {
